@@ -1,0 +1,91 @@
+name: Application Backend CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backend-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-laravel:
+    name: Tester Laravel
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer les sources
+        uses: actions/checkout@v7.0.1
+
+      - name: Installer PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          extensions: mbstring, pdo_sqlite, sqlite3
+          coverage: none
+          tools: composer:v2
+
+      - name: Vérifier les fichiers Composer
+        run: composer validate --no-check-publish
+
+      - name: Préparer les répertoires Laravel
+        run: |
+          mkdir -p bootstrap/cache
+          mkdir -p storage/framework/cache/data
+          mkdir -p storage/framework/sessions
+          mkdir -p storage/framework/views
+          mkdir -p storage/logs
+          chmod -R u+rwX bootstrap/cache storage
+
+      - name: Installer les dépendances PHP
+        run: |
+          composer install \
+            --no-interaction \
+            --prefer-dist \
+            --no-progress
+
+      - name: Préparer l’environnement Laravel
+        run: |
+          cp .env.example .env
+          touch database/database.sqlite
+          php artisan key:generate
+          php artisan config:clear
+
+      - name: Vérifier la syntaxe PHP
+        run: |
+          find app config database routes tests \
+            -type f \
+            -name "*.php" \
+            -print0 \
+          | xargs -0 -n1 php -l
+
+      - name: Vérifier les migrations
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: php artisan migrate:fresh --force
+
+      - name: Exécuter les tests Laravel
+        env:
+          APP_ENV: testing
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
+        run: |
+          mkdir -p storage/logs
+          php artisan test \
+            --log-junit storage/logs/junit-laravel.xml
+
+      - name: Publier le rapport de tests
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: laravel-test-results
+          path: storage/logs/junit-laravel.xml
+          if-no-files-found: warn
+          retention-days: 30

@@ -1,0 +1,35 @@
+{
+  "model_name": "review_topic_macro_svm",
+  "algorithm": "TF-IDF mots + caractères avec LinearSVC",
+  "trained_at": "2026-08-20T15:53:56.526347+00:00",
+  "training_rows": 120,
+  "classes": [
+    "commercial_service",
+    "device_hardware",
+    "other_unclear",
+    "software_ecosystem",
+    "usability"
+  ],
+  "class_distribution": {
+    "software_ecosystem": 45,
+    "device_hardware": 36,
+    "commercial_service": 11,
+    "usability": 17,
+    "other_unclear": 11
+  },
+  "validation_method": "validation croisée stratifiée à 5 plis",
+  "validation_accuracy": 0.525,
+  "validation_macro_f1": 0.33,
+  "validation_weighted_f1": 0.47,
+  "training_dataset": "storage/app/ai/reviews_ai_macro_120.csv",
+  "training_dataset_sha256": "bfbbc21836f5a1d1b69a840e88568358d1d9abd828ebdf4b27aa681050206f12",
+  "sklearn_version": "1.6.1",
+  "decision_policy": {
+    "automatic_threshold": 0.3,
+    "estimated_automatic_coverage": 0.517,
+    "estimated_accuracy_above_threshold": 0.71,
+    "manual_review_below_threshold": true,
+    "validation_samples": 120,
+    "warning": "Estimations obtenues sur un petit échantillon. Le seuil devra être réévalué avec davantage de données."
+  }
+}

@@ -1,0 +1,10 @@
+*
+!ai_service/
+!ai_service/**
+!storage/
+!storage/app/
+!storage/app/ai/
+!storage/app/ai/models/
+!storage/app/ai/models/review_topic_macro_svm.joblib
+!storage/app/ai/models/review_topic_macro_svm.metadata.json
+!requirements-ai-runtime.txt

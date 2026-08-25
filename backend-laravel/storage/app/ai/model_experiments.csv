@@ -1,0 +1,7 @@
+experiment,task,accuracy,macro_f1,weighted_f1,notes
+majority_baseline,macro,0.3750,,,Toujours prédire software_ecosystem
+zero_shot_fine_v1,fine,0.3250,0.27,0.32,Meilleure version zero-shot détaillée
+zero_shot_fine_v2,fine,0.2333,0.21,0.22,Descriptions longues moins performantes
+zero_shot_macro,macro,0.4167,0.33,0.36,Meilleure répartition entre familles
+tfidf_logistic_cv5,macro,0.5083,0.28,0.43,Meilleure accuracy que le zero-shot mais ignore deux familles
+tfidf_linear_svm_cv5,macro,0.5250,0.33,0.47,Meilleur compromis actuel mais other_unclear reste non reconnu

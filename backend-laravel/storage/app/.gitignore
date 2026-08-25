@@ -1,0 +1,15 @@
+*
+!.gitignore
+!private/
+!public/
+
+# Fichiers nécessaires à la CI du modèle IA
+!ai/
+ai/*
+!ai/model_experiments.csv
+!ai/reviews_ai_macro_120.csv
+!ai/supervised_macro_svm_cv_predictions_120.csv
+!ai/models/
+ai/models/*
+!ai/models/review_topic_macro_svm.joblib
+!ai/models/review_topic_macro_svm.metadata.json

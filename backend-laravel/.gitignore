@@ -1,0 +1,53 @@
+*.log
+.DS_Store
+.env
+.env.backup
+.env.production
+.phpactor.json
+.phpunit.result.cache
+/.fleet
+/.idea
+/.nova
+/.phpunit.cache
+/.vscode
+/.zed
+/auth.json
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+/vendor
+Homestead.json
+Homestead.yaml
+Thumbs.db
+
+# Environnements Python et caches
+/.venv-ai/
+/.venv-spark/
+/.pytest_cache/
+**/__pycache__/
+*.py[cod]
+/.coverage
+
+# Données locales, imports et résultats générés
+/storage/app/imports/
+/storage/app/bigdata/
+/storage/app/code-backups/
+/storage/app/ai/monitoring.sqlite*
+/storage/app/ai/pytest-coverage.xml
+/storage/app/ai/pytest-model-results.txt
+/dist/
+
+# Bases locales
+/database/*.sqlite
+/database/*.sqlite-*
+
+# Copies et fichiers locaux temporaires
+/__MACOSX/
+/reviewpro-ai-tests/
+/.gitignore.before-mlops
+
+# Cache Laravel généré
+/bootstrap/cache/*.php
