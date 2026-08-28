@@ -12,15 +12,7 @@ use Illuminate\Support\Str;
 
 /**
  * Collecte automatisee des avis Google via l'API officielle Google Places
- * (Place Details, New).
  *
- * Limite connue de l'API : Google ne renvoie que les 5 avis les plus
- * "pertinents" par etablissement (pas d'acces a l'historique complet).
- * C'est une limite de l'API elle-meme, a documenter comme telle dans le
- * dossier RNCP (BC01 : argument pour justifier la collecte multi-sources,
- * completee par l'import manuel Trustpilot).
- *
- * Usage :
  *   php artisan reviews:fetch-google
  */
 class FetchGoogleReviews extends Command
