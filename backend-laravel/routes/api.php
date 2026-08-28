@@ -2,7 +2,7 @@
 use App\Http\Controllers\Api\AiPredictionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ReviewController; // <--- N'oublie pas cette ligne d'import !
+use App\Http\Controllers\Api\ReviewController; 
 
 Route::get('/user', function (Request $request) {
     return $request->user();
