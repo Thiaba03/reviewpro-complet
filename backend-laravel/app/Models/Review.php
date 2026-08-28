@@ -27,22 +27,28 @@ class Review extends Model
     'sentiment',
     'score',
     'topics',
+    'category',
+    'category_label',
+    'decision_margin',
+    'needs_human_review',
+    'ai_prediction_id',
 ];
 
-    // Conversion automatique : La base stocke du JSON, mais Laravel  donne un Tableau
+    //  La base stocke du JSON, mais Laravel  donne un Tableau
     protected $casts = [
     'topics' => 'array',
     'date_avis' => 'datetime',
     'is_anonymized' => 'boolean',
+    'needs_human_review' => 'boolean',
 ];
 
-    // Lien vers l'utilisateur (un avis appartient à un User) - optionnel pour les avis collectes
+    // Lien vers l'utilisateur 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Lien vers le commerce concerne (Darty, Boulanger, Fnac...) - optionnel pour les avis saisis via le formulaire
+    // Lien vers le commerce concerne 
     public function commerce()
     {
         return $this->belongsTo(Commerce::class);

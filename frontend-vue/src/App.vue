@@ -8,10 +8,10 @@ import HealthMonitor from './components/HealthMonitor.vue';
 const activeView = ref('dashboard');
 const menuOpen = ref(false);
 const navigation = [
-  { id: 'dashboard', label: 'Tableau de bord', icon: '▦' },
-  { id: 'reviews', label: 'Avis clients', icon: '◫' },
+  { id: 'dashboard', label: 'Tableau de bord', icon: '⌂' },
+  { id: 'reviews', label: 'Avis clients', icon: '▤' },
   { id: 'analyzer', label: 'Analyse IA', icon: '✦' },
-  { id: 'monitoring', label: 'Monitorage', icon: '◉' },
+  { id: 'monitoring', label: 'Monitorage', icon: '◌' },
 ];
 const current = computed(() => navigation.find((item) => item.id === activeView.value));
 const selectView = (view) => {
@@ -27,9 +27,10 @@ const selectView = (view) => {
     <aside :class="['sidebar', { open: menuOpen }]" aria-label="Navigation principale">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">R</span>
-        <div><strong>ReviewPro</strong><small>Opinion Intelligence</small></div>
+        <div><strong>ReviewPro</strong><small>Analyse des avis clients</small></div>
       </div>
 
+      <p class="menu-label">Menu</p>
       <nav>
         <button
           v-for="item in navigation"
@@ -46,7 +47,7 @@ const selectView = (view) => {
 
       <div class="sidebar-footer">
         <span class="status-dot" aria-hidden="true"></span>
-        <div><strong>Environnement local</strong><small>Laravel · FastAPI · Vue</small></div>
+        <div><strong>Services disponibles</strong><small>Laravel · FastAPI · Vue</small></div>
       </div>
     </aside>
 
@@ -59,7 +60,7 @@ const selectView = (view) => {
           <p class="eyebrow">ReviewPro / {{ current?.label }}</p>
           <h1>{{ current?.label }}</h1>
         </div>
-        <div class="topbar-meta"><span class="live-dot" aria-hidden="true"></span>Prototype opérationnel</div>
+        <div class="topbar-meta"><span class="live-dot" aria-hidden="true"></span>Système opérationnel</div>
       </header>
 
       <main id="main-content" class="main-content" tabindex="-1">

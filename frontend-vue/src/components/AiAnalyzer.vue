@@ -325,4 +325,7 @@ li {
     white-space: nowrap;
     border: 0;
 }
+.analyzer{max-width:none;margin:0;padding:24px;border-color:#e5e8e6;border-radius:11px;box-shadow:0 5px 18px rgba(32,44,38,.035)}
+h2{color:#242824;font-size:1.45rem}.description,.field-help,.character-count{color:#7c827e}textarea{color:#2c312e;border-color:#d8dfdb;border-radius:9px}textarea:focus-visible,button:focus-visible,summary:focus-visible,.error:focus,.result:focus{outline-color:#9eb7ad}
+button{background:#344b42;border-radius:8px}button:hover:not(:disabled){background:#263a32}.result{border-radius:10px}.result.reliable{background:#e8f4ed;border-color:#72a486}.result.uncertain{background:#faf3e5;border-color:#bd914e}
 </style>
