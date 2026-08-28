@@ -53,17 +53,21 @@ Datafiniti est documenté avec la licence CC BY-NC-SA 4.0. Le scraping utilise u
 
 ## 6. Durée de conservation
 
-Le prototype ne possède pas encore de suppression automatique fondée sur une durée de conservation.
+La durée de conservation est définie par la variable REVIEW_RETENTION_DAYS
+(730 jours par défaut, configurable sans changer le code).
 
-Avant une mise en production, le responsable du traitement devra définir et documenter :
+Une commande artisan (`reviews:purge-expired`) anonymise automatiquement
+les avis dépassant ce seuil : le texte et l'auteur sont vidés, l'avis est
+marqué `is_anonymized` et horodaté `anonymized_at`. Les statistiques déjà
+calculées (sentiment, catégorie, score) sont conservées, car elles
+constituent la finalité légitime du traitement.
 
-- la durée de conservation des avis ;
-- la durée des journaux import ;
-- la durée des fichiers sources ;
-- la procédure de suppression ou anonymisation ;
-- les exceptions nécessaires pour les statistiques anonymisées.
+Cette commande est planifiée quotidiennement via le scheduler Laravel
+(`routes/console.php`). En production, elle doit être déclenchée par une
+tâche cron système appelant `php artisan schedule:run` chaque minute.
 
-Cette limite est identifiée et ne doit pas être présentée comme déjà automatisée.
+Elle dispose d'un mode `--dry-run` permettant de vérifier le nombre
+d'avis concernés avant toute modification réelle.
 
 ## 7. Sécurité
 
@@ -103,7 +107,7 @@ La route de suppression existe dans API, mais elle devra être protégée par au
 |---|---|---|
 | Anonymisation des imports | Réalisée | Maintenir les tests |
 | Traçabilité des sources | Réalisée | Vérifier périodiquement les licences |
-| Durée de conservation | Non automatisée | Définir et programmer la purge |
+| Durée de conservation | Automatisée (`reviews:purge-expired`, planifiée quotidiennement) | Activer le cron système en production |
 | Authentification des suppressions | Incomplète | Protéger les routes sensibles |
 | Base juridique | À formaliser | Décision du responsable du traitement |
 | Gestion des droits | À formaliser | Créer une procédure |

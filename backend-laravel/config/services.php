@@ -2,17 +2,7 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Third Party Services
-    |--------------------------------------------------------------------------
-    |
-    | This file is for storing the credentials for third party services such
-    | as Mailgun, Postmark, AWS and more. This file provides the de facto
-    | location for this type of information, allowing packages to have
-    | a conventional file to locate the various service credentials.
-    |
-    */
+    
 
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
@@ -47,4 +37,7 @@ return [
     'timeout' => (int) env('AI_SERVICE_TIMEOUT', 10),
 ],
 
+'reviewpro_rgpd' => [
+    'review_retention_days' => (int) env('REVIEW_RETENTION_DAYS', 730),
+],
 ];

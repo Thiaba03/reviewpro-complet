@@ -32,6 +32,7 @@ class Review extends Model
     'decision_margin',
     'needs_human_review',
     'ai_prediction_id',
+    'anonymized_at',
 ];
 
     //  La base stocke du JSON, mais Laravel  donne un Tableau
@@ -40,6 +41,7 @@ class Review extends Model
     'date_avis' => 'datetime',
     'is_anonymized' => 'boolean',
     'needs_human_review' => 'boolean',
+    'anonymized_at' => 'datetime',
 ];
 
     // Lien vers l'utilisateur 
