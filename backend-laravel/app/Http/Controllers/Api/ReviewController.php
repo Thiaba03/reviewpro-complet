@@ -15,15 +15,14 @@ class ReviewController extends Controller
     {
         // 1.  valide que le texte 
         $validated = $request->validate([
-            'content' => 'required|string|min:5', // Minimum 5 caractères [cite: 149]
+            'content' => 'required|string|min:5', /
         ]);
 
                 // 2. On appelle notre Service IA pour analyser le sentiment
         $analysis = $analyzer->analyze($validated['content']);
 
         // 2bis. On appelle le modèle SVM certifié pour classer la plainte.
-        // Non-bloquant : si le service FastAPI est indisponible, l'avis
-        // est quand même créé, avec les champs de catégorie à null.
+        
         $classification = null;
         try {
             $classification = $classifier->predict($validated['content']);
