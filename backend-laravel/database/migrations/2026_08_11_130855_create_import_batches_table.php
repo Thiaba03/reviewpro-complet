@@ -16,13 +16,13 @@ return new class extends Migration
                 ->constrained('data_sources')
                 ->restrictOnDelete();
 
-            // Nom du fichier d’origine, si l’import vient d’un fichier
+            // Nom 
             $table->string('original_filename')->nullable();
 
             // Empreinte SHA-256 permettant d’identifier le fichier
             $table->string('file_checksum', 64)->nullable()->index();
 
-            // pending, running, completed ou failed
+           
             $table->string('status')->default('pending')->index();
 
             // Mesures de qualité de l’import
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->unsignedInteger('rows_rejected')->default(0);
             $table->unsignedInteger('rows_duplicated')->default(0);
 
-            // Paramètres utilisés : séparateur CSV, langue, colonnes...
+            // Paramètres utilisés 
             $table->json('parameters')->nullable();
 
             // Message général en cas d’échec
