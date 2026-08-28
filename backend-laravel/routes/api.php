@@ -8,7 +8,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// --- Nos routes pour les avis ---
+// --- routes pour les avis ---
 // CRUD complet des avis
 Route::get('/reviews', [ReviewController::class, 'index']);      // Liste
 Route::post('/reviews', [ReviewController::class, 'store']);     // Création + IA
