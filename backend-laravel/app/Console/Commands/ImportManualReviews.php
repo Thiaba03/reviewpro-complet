@@ -9,14 +9,7 @@ use Illuminate\Console\Command;
 
 /**
  * Import des avis Trustpilot collectes manuellement.
- *
- * Pourquoi manuel : Trustpilot est protege par un systeme anti-bot (AWS WAF,
- * "Verifying your connection...") qui bloque les requetes automatisees simples
- * (code HTTP 403). Contourner cette protection demanderait un navigateur
- * automatise capable de resoudre un challenge JavaScript, sans garantie de
- * succes. Face a cette contrainte reelle, la collecte de ce sous-ensemble
- * d'avis se fait manuellement : copier/coller depuis le site public dans un
- * CSV, puis import structure via cette commande.
+ mport structure via cette commande.
  *
  * Usage :
  *   php artisan reviews:import-manual storage/app/imports/trustpilot_manual_reviews.csv
